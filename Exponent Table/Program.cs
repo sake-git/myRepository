@@ -25,12 +25,13 @@
                 } while (!isValidNumber);
 
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\nNumber\t\t\tSquared\t\t\tCubed");
+                Console.WriteLine("\nNumber\t\tSquared\t\tCubed");
 
                 for(int counter = 1; counter  <= inputNumber; counter++) //Loop until all the exponents are displayed.
                 {
                     //display the square and cube of a number using Math.Pow() function.
-                    Console.WriteLine($"{counter}\t\t\t{Math.Pow(counter,2)}\t\t\t{Math.Pow(counter, 3)}");
+                    //Formatter is used to align numbers to right
+                    Console.WriteLine($"{counter,6}\t\t{Math.Pow(counter,2),6}\t\t{Math.Pow(counter, 3),6}");  
                 }
                 Console.ForegroundColor = ConsoleColor.Gray;
 

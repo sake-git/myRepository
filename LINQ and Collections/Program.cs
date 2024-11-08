@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            int[] nums = { 10, 2330, 112233, 12, 949, 3764, 2942, 523863 };
+            int[] nums = { 10, 2330, 112233, 12, 949, 3764, 2942, 523863 };            
+            
             Console.WriteLine("Array Content:  \t");
             foreach( int num in nums)
             {

@@ -27,9 +27,7 @@ namespace Shopping_List
                 { "7","grapefruit" },
                 { "8","honeydew" }
             };
-
             
-
             Dictionary<string,double> shoppingList = new Dictionary<string,double>(); //Save item in shopping cart
             Console.WriteLine("Item Catalogue");
             do

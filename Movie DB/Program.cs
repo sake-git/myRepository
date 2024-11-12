@@ -3,26 +3,32 @@
     internal class Program
     {
         //Enum to convert index used by user to input choice.
-        enum TYPE {scifi =1, horror, romantic, fantasy, action, comedy, biographical };
+        enum TYPE {scifi =1, horror, romantic, fantasy, action, comedy, biographical,animated, drama };
         static void Main(string[] args)
         {
             List<Movie> MovieDb = new List<Movie>() //Movie DB
             {
-                new("SciFi","ET"),
-                new("SciFi","Space Odyssey"),
-                new("Horror","Alien"),
-                new("Horror","Resident Evil"),
-                new("Horror","Cabin Fever"),
-                new("Romantic","Walk to Remember"),
-                new("Romantic","Pretty Women"),
-                new("Action","John Wick"),
-                new("Action","Mission Impossible"),
-                new("Fantasy","Lord of the rings"),
-                new("Fantasy","Stardust"),
-                new("Comedy","White Chicks"),
-                new("Comedy","Hangover"),
-                new("Biographical","Goodfellas"),
-                new("Biographical","Hidden Figures")
+                new("SciFi", "ET", 1982, 115),
+                new("SciFi", "2001:A Space Odyssey", 1968, 149),
+                new("Horror", "Alien", 1979, 117),
+                new("Horror", "Resident Evil", 2002, 100 ),
+                new("Horror", "Cabin Fever", 2002, 94),
+                new("Romantic", "Walk to Remember", 2002, 102),
+                new("Romantic", "Pretty Women", 1990, 125),
+                new("Action", "John Wick", 2014, 101),
+                new("Action", "Mission Impossible", 1996 , 110),
+                new("Fantasy", "Lord of the rings", 2001, 178),
+                new("Fantasy", "Stardust", 2007, 127),
+                new("Comedy", "White Chicks", 2004, 109),
+                new("Comedy", "Hangover", 2009, 96),
+                new("Biographical", "Goodfellas", 1990, 146),
+                new("Biographical", "Hidden Figures", 2016, 127 ),
+                new("Animated", "Moana", 2016, 103),
+                new("Animated", "Ratatouille", 2007, 101),
+                new("Animated", "The Nightmare Before Christmas", 1993, 76),
+                new("Drama", "Little Woman", 2019, 135),
+                new("Drama", "The Shawshank Redemption", 1994, 142),
+                new("Drama", "Forest Gump", 1994, 144)
             };
 
             do
@@ -30,6 +36,7 @@
                 DisplayMenu(); //Display Movie categories
                 Console.WriteLine("What category are you interested in?");
                 string category = Console.ReadLine().Trim();
+
                 int value;
                 bool isValid = Int32.TryParse(category, out value); //Check if user has entered index
                 TYPE catEnum;
@@ -46,11 +53,13 @@
 
                 if (isValid) //Category is valid
                 {   //Filter the results which qualifies
-                    List<Movie> resultList = MovieDb.Where(x => x.Category.ToLower() == category.ToLower()).ToList();
+                    List<Movie> resultList = MovieDb.Where(x => x.Category.ToLower() == category.ToLower()).OrderBy(x => x.Title).ToList();
                     Console.WriteLine("\nAvailable movies:");
                     Console.ForegroundColor = ConsoleColor.Green;
 
                     //Display Results
+                    Console.WriteLine("\nMovie Title \t\t Year of Release  Runtime");
+                    Console.WriteLine("=====================================================");
                     foreach (Movie movie in resultList)
                     {
                         movie.DisplayMovie();
@@ -78,6 +87,8 @@
             Console.WriteLine("5. Action");
             Console.WriteLine("6. Comedy");
             Console.WriteLine("7. Biographical");
+            Console.WriteLine("8. Animated");
+            Console.WriteLine("9. Drama");
             Console.WriteLine("***********************************************");
             Console.ForegroundColor = ConsoleColor.Gray;
         }

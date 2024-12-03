@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -58,6 +59,7 @@ namespace Car_Inventory
             for (int i = 0; i < cars.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {cars[i]}");
+                Console.WriteLine(cars[i].GetType());
             }
         }
 
